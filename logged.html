@@ -6,15 +6,9 @@
             </p>
             <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                 <li>
-                    <a href="/home" class="nav-link text-muted page-logged">
+                    <a class="nav-link text-muted" href="#" data-bs-toggle="modal" data-bs-target="#modalConfiguration">
                         <i class="bi bi-gear d-block mb-1 text-center"></i>
                         Configuração
-                    </a>
-                </li>
-                <li>
-                    <a href="/logout" class="nav-link text-muted page-logged">
-                        <i class="bi bi-door-closed d-block mb-1 text-center"></i>
-                        Sair
                     </a>
                 </li>
             </ul>
@@ -61,3 +55,21 @@
         </ul>
     </div>
 </nav>
+
+<!-- Modal Configuration -->
+<div class="modal fade" id="modalConfiguration" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Configuração</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<a href="/logout" class="btn btn-secondary link-logged" data-bs-dismiss="modal"><i class="bi bi-door-closed"></i> Sair</a>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+			</div>
+		</div>
+	</div>
+</div>

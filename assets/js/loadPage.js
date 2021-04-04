@@ -86,7 +86,7 @@ export const openPageLogged = (page) => {
             return alert('error');
         }
         loadPage(page);
-        $('.page-logged').on('click', function(event) {
+        $('.page-logged, .link-logged').on('click', function(event) {
             const page = $(this).attr('href').substring(1);
             const location = window.location.pathname.substring(1);
             if (location != page) {
