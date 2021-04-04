@@ -13,19 +13,19 @@ export const openPageNotLoggedIn = (page) => {
         }
         const date = new Date;
         $('#yearNow').text(date.getFullYear());
-        loadPage(page, this);
+        loadPage(page);
         $('.page-not-logged-in').on('click', function(event) {
             const page = $(this).attr('href').substring(1);
             const location = window.location.pathname.substring(1);
             if (location != page) {
-                loadPage(page, this);
+                loadPage(page);
             }
             event.preventDefault();
         });
     });
 }
 
-const loadPage = (page, icon = null) => {
+const loadPage = (page) => {
     if (page == 'logout') {
         openPageNotLoggedIn('login');
         return false;
@@ -56,7 +56,7 @@ const loadPage = (page, icon = null) => {
             return false;
         }
         window.history.pushState('', '', `/${page}`);
-        setColorIconPage(icon);
+        setColorIconPage(`#page${page.capitalize()}`);
         $('#notFound').on('click', () => {
             loadPage('error');
         });
@@ -90,7 +90,7 @@ export const openPageLogged = (page) => {
             const page = $(this).attr('href').substring(1);
             const location = window.location.pathname.substring(1);
             if (location != page) {
-                loadPage(page, this);
+                loadPage(page);
             }
             event.preventDefault();
         });
