@@ -27,6 +27,9 @@ export const openPageNotLoggedIn = (page) => {
 
 const loadPage = (page) => {
     if (page == 'logout') {
+        const modalConfiguration = document.getElementById('modalConfiguration');
+        const modal = bootstrap.Modal.getInstance(modalConfiguration);
+        modal.hide();
         openPageNotLoggedIn('login');
         return false;
     }
