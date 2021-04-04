@@ -11,20 +11,25 @@ export const openPageNotLoggedIn = (page) => {
         if (status == 'error') {
             return alert('error');
         }
-        loadPageNotLoggedIn(page);
+        const date = new Date;
+        $('#yearNow').text(date.getFullYear());
+        loadPage(page, this);
         $('.page-not-logged-in').on('click', function(event) {
             const page = $(this).attr('href').substring(1);
             const location = window.location.pathname.substring(1);
             if (location != page) {
-                loadPageNotLoggedIn(page);
-                setColorIconPage(this);
+                loadPage(page, this);
             }
             event.preventDefault();
         });
     });
 }
 
-const loadPageNotLoggedIn = (page) => {
+const loadPage = (page, icon = null) => {
+    if (page == 'logout') {
+        openPageNotLoggedIn('login');
+        return false;
+    }
     $('#content').html(`
     <div class="lds-ring mt-5 mx-auto">
         <div></div>
@@ -46,18 +51,48 @@ const loadPageNotLoggedIn = (page) => {
             </div>
             `);
             $('#btnClick').on('click', () => {
-                loadPageNotLoggedIn('login');
+                loadPage('login');
             });
             return false;
         }
         window.history.pushState('', '', `/${page}`);
+        setColorIconPage(icon);
         $('#notFound').on('click', () => {
-            loadPageNotLoggedIn('error');
+            loadPage('error');
+        });
+        $('#formRegister').submit((event) => {
+            openPageLogged('home');
+            event.preventDefault();
         });
     });
 }
 
 const setColorIconPage = (location) => {
-    $('.page-not-logged-in').removeClass('text-white').addClass('text-muted');
+    $('.page-not-logged-in, .page-logged').removeClass('text-white').addClass('text-muted');
     $(location).removeClass('text-muted').addClass('text-white');
+}
+
+export const openPageLogged = (page) => {
+    $('main').html(`
+    <div class="lds-ring mt-5 mx-auto">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    `);
+    $('main').load('logged.html', (response, status, xhr) => {
+        if (status == 'error') {
+            return alert('error');
+        }
+        loadPage(page);
+        $('.page-logged').on('click', function(event) {
+            const page = $(this).attr('href').substring(1);
+            const location = window.location.pathname.substring(1);
+            if (location != page) {
+                loadPage(page, this);
+            }
+            event.preventDefault();
+        });
+    });
 }
