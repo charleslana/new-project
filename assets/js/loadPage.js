@@ -26,6 +26,7 @@ export const openPageNotLoggedIn = (page) => {
 }
 
 const loadPage = (page) => {
+    $('[data-bs-toggle="tooltip"]').tooltip("hide");
     if (page == 'logout') {
         const modalConfiguration = document.getElementById('modalConfiguration');
         const modal = bootstrap.Modal.getInstance(modalConfiguration);
@@ -68,6 +69,10 @@ const loadPage = (page) => {
         $('#formRegister').submit((event) => {
             openPageLogged('home');
             event.preventDefault();
+        });
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
         });
     });
 }
