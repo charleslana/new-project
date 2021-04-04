@@ -1,4 +1,30 @@
-export const loadPageNotLoggedIn = (page) => {
+export const openPageNotLoggedIn = (page) => {
+    $('main').html(`
+    <div class="lds-ring mt-5 mx-auto">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    `);
+    $('main').load('not-logged-in.html', (response, status, xhr) => {
+        if (status == 'error') {
+            return alert('error');
+        }
+        loadPageNotLoggedIn(page);
+        $('.page-not-logged-in').on('click', function(event) {
+            const page = $(this).attr('href').substring(1);
+            const location = window.location.pathname.substring(1);
+            if (location != page) {
+                loadPageNotLoggedIn(page);
+                setColorIconPage(this);
+            }
+            event.preventDefault();
+        });
+    });
+}
+
+const loadPageNotLoggedIn = (page) => {
     $('#content').html(`
     <div class="lds-ring mt-5 mx-auto">
         <div></div>
@@ -31,7 +57,7 @@ export const loadPageNotLoggedIn = (page) => {
     });
 }
 
-export const setColorIconPage = (location) => {
+const setColorIconPage = (location) => {
     $('.page-not-logged-in').removeClass('text-white').addClass('text-muted');
     $(location).removeClass('text-muted').addClass('text-white');
 }

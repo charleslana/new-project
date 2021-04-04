@@ -1,21 +1,13 @@
-import {loadPageNotLoggedIn, setColorIconPage} from './loadPage.js';
+import {openPageNotLoggedIn} from './loadPage.js';
 
 $(document).ready(() => {
     const date = new Date;
     $('#yearNow').text(date.getFullYear());
     const location = window.location.pathname.substring(1);
     if (location) {
-        loadPageNotLoggedIn(location);
+        if (location == 'login' || location == 'register') {
+            return openPageNotLoggedIn(location);
+        }
     }
-    loadPageNotLoggedIn('login');
-});
-
-$('.page-not-logged-in').on('click', function(event) {
-    const page = $(this).attr('href').substring(1);
-    const location = window.location.pathname.substring(1);
-    if (location != page) {
-        loadPageNotLoggedIn(page);
-        setColorIconPage(this);
-    }
-    event.preventDefault();
+    openPageNotLoggedIn('login');
 });
