@@ -46,12 +46,14 @@ const loadPage = (page) => {
                     <h1>Oops!</h1>
                     <h2>404 Not found</h2>
                     <p>Sorry, this page not found.</p>
-                    <button type="button" class="btn btn-primary btn-lg" id="btnClick">Ir para á Home</button>
+                    <button type="button" class="btn btn-primary btn-lg" id="btnClick">Voltar anteriormente</button>
                 </div>
             </div>
             `);
             $('#btnClick').on('click', () => {
-                loadPage('login');
+                window.history.back();
+                const location = window.location.pathname.substring(1);
+                loadPage(location);
             });
             return false;
         }
