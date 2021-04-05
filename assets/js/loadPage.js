@@ -84,11 +84,13 @@ const setColorIconPage = (location) => {
 
 export const openPageLogged = (page) => {
     $('main').html(`
-    <div class="lds-ring mt-5 mx-auto">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+    <div class="container">
+        <div class="lds-ring mt-5 mx-auto">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     </div>
     `);
     $('main').load('logged.html', (response, status, xhr) => {

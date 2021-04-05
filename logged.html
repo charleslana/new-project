@@ -1,10 +1,10 @@
 <header class="px-3 py-2 bg-dark text-white">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <p class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+            <a class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none" href="#" data-bs-toggle="modal" data-bs-target="#modalProfile">
                 <i class="bi bi-person me-2"></i>
                 Charles
-            </p>
+            </a>
             <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                 <li>
                     <p class="nav-link text-white text-center" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="bottom" title="Partes">
@@ -35,7 +35,7 @@
     </div>
 </header>
 
-<div class="container" id="content">
+<div id="content">
     <div class="lds-ring mt-5 mx-auto">
         <div></div>
         <div></div>
@@ -85,6 +85,24 @@
 			</div>
 			<div class="modal-body">
 				<a href="/logout" class="btn btn-secondary link-logged"><i class="bi bi-door-closed"></i> Sair</a>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal Profile -->
+<div class="modal fade" id="modalProfile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Profile</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>

@@ -12,3 +12,15 @@
     vertical-align: middle;
     font-size: 19px;
 }
+
+.image-carousel {
+    height: 400px;
+}
+
+#content {
+    overflow-x: hidden;
+}
+
+.bg-gray {
+    background-color: gray;
+}
