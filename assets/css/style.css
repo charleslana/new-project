@@ -24,3 +24,7 @@
 .bg-gray {
     background-color: gray;
 }
+
+.image-card {
+    height: 140px;
+}
