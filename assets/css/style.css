@@ -25,6 +25,10 @@
     height: 140px;
 }
 
+.bg-gray {
+    background-color: gray;
+}
+
 .carousel-indicators [data-bs-target] {
     background-color: gray; 
 }
