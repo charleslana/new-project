@@ -1,14 +1,5 @@
 export const openPageNotLoggedIn = (page) => {
-    $('main').html(`
-    <div class="container">
-        <div class="lds-ring mt-5 mx-auto">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
-    `);
+    $('main').html(showLoading());
     $('main').load('not-logged-in.html', (response, status, xhr) => {
         if (status == 'error') {
             return alert('error');
@@ -36,14 +27,7 @@ const loadPage = (page) => {
         openPageNotLoggedIn('login');
         return false;
     }
-    $('#content').html(`
-    <div class="lds-ring mt-5 mx-auto">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-    `);
+    $('#content').html(showLoading());
     $('#content').load(`pages/${page}.html`, (response, status, xhr) => {
         if (status == 'error') {
             $('#content').html(`
@@ -86,8 +70,8 @@ const setColorIconPage = (location) => {
     $(location).removeClass('text-muted').addClass('text-white');
 }
 
-export const openPageLogged = (page) => {
-    $('main').html(`
+const showLoading = () => {
+    return `
     <div class="container">
         <div class="lds-ring mt-5 mx-auto">
             <div></div>
@@ -96,7 +80,11 @@ export const openPageLogged = (page) => {
             <div></div>
         </div>
     </div>
-    `);
+    `;
+}
+
+export const openPageLogged = (page) => {
+    $('main').html(showLoading());
     $('main').load('logged.html', (response, status, xhr) => {
         if (status == 'error') {
             return alert('error');
