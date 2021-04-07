@@ -21,6 +21,10 @@ export const openPageNotLoggedIn = (page) => {
 const loadPage = (page) => {
     $('[data-bs-toggle="tooltip"]').tooltip("hide");
     if (page == 'logout') {
+        const myOffcanvas = document.getElementById('offcanvasRight');
+        const bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas);
+        bsOffcanvas.show();
+        bsOffcanvas.hide();
         openPageNotLoggedIn('login');
         return false;
     }
