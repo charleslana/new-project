@@ -47,7 +47,7 @@ const loadPage = (page) => {
             return false;
         }
         window.history.pushState('', '', `/${page}`);
-        setColorIconPage(`#page${page.capitalize()}`);
+        setColorIconPage(`#page-${page}`);
         $('#notFound').on('click', () => {
             loadPage('error');
         });
