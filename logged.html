@@ -29,8 +29,8 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link text-muted" href="#" data-bs-toggle="modal" data-bs-target="#modalOptions">
-                            <i class="bi bi-gear d-block mb-1 text-center"></i>
+                        <a class="nav-link text-muted" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                            <i class="bi bi-gear d-block mb-1 text-center" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"></i>
                             Options
                         </a>
                     </li>
@@ -73,21 +73,14 @@
     </div>
 </nav>
 
-<!-- Modal Options -->
-<div class="modal fade" id="modalOptions" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Options</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-			<div class="modal-body">
-				<a href="/logout" class="btn btn-secondary link-logged"><i class="bi bi-door-closed"></i> Logout</a>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-			</div>
-		</div>
+<!-- Offcanvas Options -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+	<div class="offcanvas-header">
+		<h5 id="offcanvasRightLabel">Options</h5>
+		<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+	</div>
+	<div class="offcanvas-body">
+	    <a href="/logout" class="btn btn-secondary link-logged" data-bs-dismiss="offcanvas"><i class="bi bi-door-closed"></i> Logout</a>
 	</div>
 </div>
 

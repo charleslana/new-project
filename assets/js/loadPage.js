@@ -21,9 +21,6 @@ export const openPageNotLoggedIn = (page) => {
 const loadPage = (page) => {
     $('[data-bs-toggle="tooltip"]').tooltip("hide");
     if (page == 'logout') {
-        const modalOptions = document.getElementById('modalOptions');
-        const modal = bootstrap.Modal.getInstance(modalOptions);
-        modal.hide();
         openPageNotLoggedIn('login');
         return false;
     }
