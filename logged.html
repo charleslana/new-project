@@ -130,17 +130,22 @@
 
 <!-- Modal Battle Pvp -->
 <div class="modal fade" id="modalBattlePvp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-	<div class="modal-dialog modal-lg">
+	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">Battle PvP</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				<button type="button" class="btn-close close-battle" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-				<button type="button" class="btn btn-primary btn-lg d-block mt-3 mb-3 mx-auto"><i class="bi bi-search"></i> Search opponent</button>
-			</div>
+				<button type="button" class="btn btn-primary d-block mt-3 mb-3 mx-auto" id="btnBattlePvp"><i class="bi bi-search"></i> Search opponent</button>
+                <button type="button" class="btn btn-primary d-block mt-3 mb-3 mx-auto d-none" id="btnBattlePvpDisabled" disabled>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Search opponent
+                </button>
+                <button type="button" class="btn btn-danger d-block mt-3 mb-3 mx-auto d-none" id="btnBattlePvpCancel">Cancel</button>
+            </div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-secondary close-battle" data-bs-dismiss="modal">Close</button>
 			</div>
 		</div>
 	</div>

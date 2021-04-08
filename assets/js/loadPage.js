@@ -1,3 +1,5 @@
+import addClickSearchBattlePvp from './searchBattlePvp.js';
+
 export const openPageNotLoggedIn = (page) => {
     $('main').html(showLoading());
     $('main').load('not-logged-in.html', (response, status, xhr) => {
@@ -59,6 +61,7 @@ const loadPage = (page) => {
             openPageLogged('home');
             event.preventDefault();
         });
+        addClickSearchBattlePvp();
         const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
         const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
             return new bootstrap.Tooltip(tooltipTriggerEl)
