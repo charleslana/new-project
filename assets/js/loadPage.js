@@ -17,6 +17,17 @@ export const openPageNotLoggedIn = (page) => {
     });
 }
 
+export const openPageLogged = (page) => {
+    $('main').html(showLoading());
+    $('main').load('logged.html', (response, status, xhr) => {
+        if (status == 'error') {
+            return showModalError();
+        }
+        loadPage(page);
+        addClickMenuLogged();
+    });
+}
+
 const loadPage = (page) => {
     hideTooltip();
     if (page == 'logout') {
@@ -51,17 +62,6 @@ const showLoading = () => {
         </div>
     </div>
     `;
-}
-
-export const openPageLogged = (page) => {
-    $('main').html(showLoading());
-    $('main').load('logged.html', (response, status, xhr) => {
-        if (status == 'error') {
-            return showModalError();
-        }
-        loadPage(page);
-        addClickMenuLogged();
-    });
 }
 
 const addClickMenuNotLoggedIn = () => {
