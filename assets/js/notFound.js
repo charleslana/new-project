@@ -6,7 +6,7 @@ const notFound = (loadPage) => {
                     <h1>Oops!</h1>
                     <h2>404 Not found</h2>
                     <p>Sorry, this page not found.</p>
-                    <button type="button" class="btn btn-primary btn-lg" id="btnNotFound">Voltar anteriormente</button>
+                    <button type="button" class="btn btn-primary btn-lg" id="btnNotFound">Back previously</button>
                 </div>
             </div>
         </div>
