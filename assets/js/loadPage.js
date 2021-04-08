@@ -1,71 +1,38 @@
+import notFound from './notFound.js';
+import {yearDate} from './date.js';
+import {hideTooltip, addTooltip} from './tooltip.js';
+import hideOffcanvas from './offcanvas.js';
+import addSubmitLogin from './login.js';
 import addClickSearchBattlePvp from './searchBattlePvp.js';
 
 export const openPageNotLoggedIn = (page) => {
     $('main').html(showLoading());
     $('main').load('not-logged-in.html', (response, status, xhr) => {
         if (status == 'error') {
-            return alert('error');
+            return showModalError();
         }
-        const date = new Date;
-        $('#yearNow').text(date.getFullYear());
+        yearDate();
         loadPage(page);
-        $('.page-not-logged-in').on('click', function(event) {
-            const page = $(this).attr('href').substring(1);
-            const location = window.location.pathname.substring(1);
-            if (location != page) {
-                loadPage(page);
-            }
-            event.preventDefault();
-        });
+        addClickMenuNotLoggedIn();
     });
 }
 
 const loadPage = (page) => {
-    $('[data-bs-toggle="tooltip"]').tooltip("hide");
+    hideTooltip();
     if (page == 'logout') {
-        const myOffcanvas = document.getElementById('offcanvasRight');
-        const bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas);
-        bsOffcanvas.show();
-        bsOffcanvas.hide();
-        openPageNotLoggedIn('login');
-        return false;
+        hideOffcanvas();
+        return openPageNotLoggedIn('login');
     }
     $('#content').html(showLoading());
     $('#content').load(`pages/${page}.html`, (response, status, xhr) => {
         if (status == 'error') {
-            $('#content').html(`
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 mt-5 text-center">
-                        <h1>Oops!</h1>
-                        <h2>404 Not found</h2>
-                        <p>Sorry, this page not found.</p>
-                        <button type="button" class="btn btn-primary btn-lg" id="btnClick">Voltar anteriormente</button>
-                    </div>
-                </div>
-            </div>
-            `);
-            $('#btnClick').on('click', () => {
-                window.history.back();
-                const location = window.location.pathname.substring(1);
-                loadPage(location);
-            });
-            return false;
+            return notFound(loadPage);
         }
         window.history.pushState('', '', `/${page}`);
         setColorIconPage(`#page-${page}`);
-        $('#notFound').on('click', () => {
-            loadPage('error');
-        });
-        $('#formRegister').submit((event) => {
-            openPageLogged('home');
-            event.preventDefault();
-        });
+        addSubmitLogin(openPageLogged);
         addClickSearchBattlePvp();
-        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-        const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl)
-        });
+        addTooltip();
     });
 }
 
@@ -90,16 +57,37 @@ export const openPageLogged = (page) => {
     $('main').html(showLoading());
     $('main').load('logged.html', (response, status, xhr) => {
         if (status == 'error') {
-            return alert('error');
+            return showModalError();
         }
         loadPage(page);
-        $('.page-logged, .link-logged').on('click', function(event) {
-            const page = $(this).attr('href').substring(1);
-            const location = window.location.pathname.substring(1);
-            if (location != page) {
-                loadPage(page);
-            }
-            event.preventDefault();
-        });
+        addClickMenuLogged();
     });
+}
+
+const addClickMenuNotLoggedIn = () => {
+    $('.page-not-logged-in').on('click', function(event) {
+        const page = $(this).attr('href').substring(1);
+        const location = window.location.pathname.substring(1);
+        if (location != page) {
+            loadPage(page);
+        }
+        event.preventDefault();
+    });
+}
+
+const addClickMenuLogged = () => {
+    $('.page-logged, .link-logged').on('click', function(event) {
+        const page = $(this).attr('href').substring(1);
+        const location = window.location.pathname.substring(1);
+        if (location != page) {
+            loadPage(page);
+        }
+        event.preventDefault();
+    });
+}
+
+const showModalError = () => {
+    const modalError = document.getElementById('modalError');
+    const myModal = new bootstrap.Modal(modalError);
+    myModal.show();
 }
