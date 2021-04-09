@@ -68,7 +68,7 @@ const showLoading = () => {
 const addClickMenuNotLoggedIn = () => {
     $('.page-not-logged-in').on('click', function(event) {
         const page = $(this).attr('href').substring(1);
-        const location = window.location.pathname.substring(1);
+        const location = window.location.pathname.replace(/^.*\//g, '');
         if (location != page) {
             loadPage(page);
         }
@@ -79,7 +79,7 @@ const addClickMenuNotLoggedIn = () => {
 const addClickMenuLogged = () => {
     $('.page-logged, .link-logged').on('click', function(event) {
         const page = $(this).attr('href').substring(1);
-        const location = window.location.pathname.substring(1);
+        const location = window.location.pathname.replace(/^.*\//g, '');
         if (location != page) {
             loadPage(page);
         }

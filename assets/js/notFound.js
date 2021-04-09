@@ -13,7 +13,7 @@ const notFound = (loadPage) => {
     `);
     $('#btnNotFound').on('click', () => {
         window.history.back();
-        const location = window.location.pathname.substring(1);
+        const location = window.location.pathname.replace(/^.*\//g, '');
         loadPage(location);
     });
 }
