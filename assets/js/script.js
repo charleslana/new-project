@@ -6,7 +6,7 @@ $(document).ready(() => {
         if (location == 'login' || location == 'register') {
             return openPageNotLoggedIn(location);
         }
-        openPageLogged(location);
+        return openPageLogged(location);
     }
     openPageNotLoggedIn('login');
 });
