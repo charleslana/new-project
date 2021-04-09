@@ -1,3 +1,4 @@
+import config from './config.js';
 import notFound from './notFound.js';
 import {yearDate} from './date.js';
 import {hideTooltip, addTooltip} from './tooltip.js';
@@ -39,7 +40,7 @@ const loadPage = (page) => {
         if (status == 'error') {
             return notFound(loadPage);
         }
-        window.history.pushState('', '', `/${page}`);
+        window.history.pushState('', '', `${config.urlFront}/${page}`);
         setColorIconPage(`#page-${page}`);
         addSubmitLogin(openPageLogged);
         addClickSearchBattlePvp();
